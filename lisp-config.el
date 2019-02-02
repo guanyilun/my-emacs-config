@@ -1,6 +1,6 @@
 ;; lisp indentation rule
 ;; ref: https://www.gnu.org/software/emacs/manual/html_node/emacs/Lisp-Indent.html
-(setq lisp-indent-offset 4)
+(setq lisp-indent-offset nil)
 
 ;; paredit mode
 (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)

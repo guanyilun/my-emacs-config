@@ -9,3 +9,6 @@
 
 ;; set python path to anaconda3
 (setq exec-path (append '("/home/aaron/anaconda3/bin") exec-path))
+(setq python-shell-virtualenv-path "/home/aaron/anaconda3/bin/python")
+
+
