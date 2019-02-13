@@ -40,7 +40,7 @@
     (org-narrow-to-subtree)
   )
 )
-(bind-key "C-c r" 'daily-review)
+;;(bind-key "C-c r" 'daily-review)
 
 
 ;; toggle from vertical split to horizontal split
@@ -84,4 +84,26 @@
 ;; add key mapping
 (bind-key "C-." 'my-paredit-convolute-sexp)
 
+;; interleave facility function
+;; a function that move a file to the default
+;; directory and open an interleave entry
+;; for the file
+;; TODO: define variables to store the default path
+(defun send-to-read (filepath)
+  (interactive "f")
+  (let ((filename (car (last (split-string filepath "/"))))
+        (new-path (concat "/home/aaron/Documents/Reading/" (car (last (split-string filepath "/")))))
+        (old-path filepath))
+    ;; transfer file to default directory
+    (copy-file old-path new-path)
+    ;; create a new heading in default reading file
+    (find-file "/home/aaron/Dropbox/org/notes/reading.org")
+    (end-of-buffer)
+    (org-insert-heading nil nil 't)
+    (insert filename)
+    ;; set property
+    (org-set-property "INTERLEAVE_PDF" new-path)
+    ;; start interleave-mode
+    (interleave-mode)))
 
+(bind-key "C-c r" 'send-to-read)
