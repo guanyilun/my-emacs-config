@@ -10,8 +10,11 @@
 
 ;; list of files to be loaded into agenda
 (setq org-agenda-files (list "~/Dropbox/org/inbox.org"
-                         "~/Dropbox/org/organizer.org"
-                         "~/Dropbox/org/tickler.org"))
+                             "~/Dropbox/org/organizer.org"
+                             "~/Dropbox/org/tickler.org"
+                             "~/Dropbox/org/gcals/pitt.org"
+                             "~/Dropbox/org/gcals/reminder.org"
+                             "~/Dropbox/org/gcals/particle.org"))
 
 ;; capture template
 (setq org-capture-templates
@@ -109,3 +112,6 @@
 ;; . "\\subsection*{%s}") ("\\subsubsection{%s}"
 ;; . "\\subsubsection*{%s}")) org-latex-classes))
 
+;; org-cdlatex configurations
+(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
