@@ -115,3 +115,6 @@
 ;; org-cdlatex configurations
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
+;; collapose all blocks by default
+(add-hook 'org-mode-hook 'org-hide-block-all)
