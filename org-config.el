@@ -73,6 +73,14 @@
 (require 'org-attach-screenshot)
 
 ;; org-ref
+
+;; to get the citation right
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -f %f"
+        "bibtex %b"
+        "pdflatex -shell-escape -interaction nonstopmode -f %f"
+        "pdflatex -shell-escape -interaction nonstopmode -f %f"))
+
 (require 'org-ref)
 (setq reftex-default-bibliography '("~/Dropbox/bib/references.bib"))
 (setq org-ref-bibliography-notes "~/Dropbox/bib/notes.org"
