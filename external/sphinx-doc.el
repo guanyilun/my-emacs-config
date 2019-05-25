@@ -158,16 +158,16 @@ Returns nil if string is not a function definition."
   "Convert a field object F to it's string representation."
   (cond ((and (stringp (sphinx-doc-field-arg f))
               (stringp (sphinx-doc-field-type f)))
-         (s-format ":${key} ${type} ${arg}: ${desc}"
+         (s-format ":${arg} ${type}: ${desc}"
                    'aget
-                   `(("key" . ,(sphinx-doc-field-key f))
+                   `(; ("key" . ,(sphinx-doc-field-key f))
                      ("type" . ,(sphinx-doc-field-type f))
                      ("arg" . ,(sphinx-doc-field-arg f))
                      ("desc" . ,(sphinx-doc-field-desc f)))))
         ((stringp (sphinx-doc-field-arg f))
-         (s-format ":${key} ${arg}: ${desc}"
+         (s-format ":${arg} (any): ${desc}"
                    'aget
-                   `(("key" . ,(sphinx-doc-field-key f))
+                   `(; ("key" . ,(sphinx-doc-field-key f))
                      ("arg" . ,(sphinx-doc-field-arg f))
                      ("desc" . ,(sphinx-doc-field-desc f)))))
         (t (s-format ":${key}: ${desc}"
@@ -186,9 +186,9 @@ Returns nil if string is not a function definition."
           (when (and (sphinx-doc-doc-before-fields ds)
                      (not (string= (sphinx-doc-doc-before-fields ds) "")))
             (concat (sphinx-doc-doc-before-fields ds) "\n"))
-          (s-join "\n" (mapcar #'sphinx-doc-field->str
-                               (sphinx-doc-doc-fields ds)))
-          ""
+          "Args:"
+          (s-pad-left 4 " " (s-join "\n" (mapcar #'sphinx-doc-field->str
+                                                 (sphinx-doc-doc-fields ds))))
           (when (and (sphinx-doc-doc-after-fields ds)
                      (not (string= (sphinx-doc-doc-after-fields ds) "")))
             (concat (sphinx-doc-doc-after-fields ds) "\n"))
