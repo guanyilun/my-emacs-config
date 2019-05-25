@@ -97,6 +97,11 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
+
+;; export with code highlight
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted")))
+
 ;; do not use time grid by default
 (setq org-agenda-use-time-grid nil)
 

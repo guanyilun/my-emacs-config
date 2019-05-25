@@ -12,3 +12,6 @@
 (setq python-shell-virtualenv-path "/home/aaron/anaconda3/bin/python")
 
 
+(add-hook 'python-mode-hook (lambda ()
+                              (require 'sphinx-doc)
+                              (sphinx-doc-mode t)))
