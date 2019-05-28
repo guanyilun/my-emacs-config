@@ -50,8 +50,8 @@
 (powerline-default-theme)
 
 ;; language tool -> grammer checking
-(setq langtool-language-tool-jar "~/bin/LanguageTool-4.4-stable/languagetool-commandline.jar")
-(require 'langtool)
+;;(setq langtool-language-tool-jar "~/bin/LanguageTool-4.4-stable/languagetool-commandline.jar")
+;;(require 'langtool)
 
 ;; flyspell mode turn on authmatically in text-mode
 ;; (dolist (hook '(text-mode-hook))

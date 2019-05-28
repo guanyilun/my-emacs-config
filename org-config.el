@@ -35,8 +35,7 @@
          "* Reading %?\n%a")
         ("d" "Daily [journal]" entry
          (file+olp+datetree "~/Dropbox/org/journal.org")
-         (file "~/.emacs.d/templates/daily.org"))
-))
+         (file "~/.emacs.d/templates/daily.org"))))
 
 ;; refile targets
 (setq org-refile-targets '(("~/Dropbox/org/organizer.org" :maxlevel . 3)
@@ -72,6 +71,17 @@
 ;; screenshot
 (require 'org-attach-screenshot)
 
+;; to get the citation right
+(setq org-latex-pdf-process
+      '("pdflatex -shell-escape -interaction nonstopmode -f %f"
+        "bibtex %b"
+        "pdflatex -shell-escape -interaction nonstopmode -f %f"
+        "pdflatex -shell-escape -interaction nonstopmode -f %f"))
+
+;; export with code highlight
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted")))
+
 ;; org-ref
 (require 'org-ref)
 (setq reftex-default-bibliography '("~/Dropbox/bib/references.bib"))
@@ -97,8 +107,8 @@
       '("~/Dropbox/bib/references.bib"))
 
 ;; enable download mode
-(org-download-enable)
-(setq-default org-download-image-dir "~/Pictures/org")
+;; (org-download-enable)
+;; (setq-default org-download-image-dir "~/Pictures/org")
 
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -115,3 +125,5 @@
 ;; org-cdlatex configurations
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
+
+(setq org-latex-prefer-user-labels t)
