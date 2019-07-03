@@ -81,7 +81,7 @@
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 
-
-
+;; tex text scale
+(set-default 'preview-scale-function 1.2)
 
 

@@ -35,7 +35,7 @@
          "* Reading %?\n%a")
         ("d" "Daily [journal]" entry
          (file+olp+datetree "~/Dropbox/org/journal.org")
-         (file "~/.emacs.d/templates/daily.org"))))
+         (file "~/.emacs.d/templates/template_070319.org"))))
 
 ;; refile targets
 (setq org-refile-targets '(("~/Dropbox/org/organizer.org" :maxlevel . 3)
@@ -83,7 +83,7 @@
       org-latex-packages-alist '(("" "minted")))
 
 ;; org-ref
-(require 'org-ref)
+
 (setq reftex-default-bibliography '("~/Dropbox/bib/references.bib"))
 (setq org-ref-bibliography-notes "~/Dropbox/bib/notes.org"
       org-ref-default-bibliography '("~/Dropbox/bib/references.bib")
@@ -99,8 +99,6 @@
                ("\\paragraph{%s}" . "\\paragraph*{%s}")
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; do not use time grid by default
-(setq org-agenda-use-time-grid nil)
 
 ;; default bibliography
 (setq bibtex-completion-bibliography
@@ -127,3 +125,7 @@
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
 (setq org-latex-prefer-user-labels t)
+
+;; collapose all blocks by default
+(add-hook 'org-mode-hook 'org-hide-block-all)
+
