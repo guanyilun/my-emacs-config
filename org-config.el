@@ -35,8 +35,7 @@
          "* Reading %?\n%a")
         ("d" "Daily [journal]" entry
          (file+olp+datetree "~/Dropbox/org/journal.org")
-         (file "~/.emacs.d/templates/daily.org"))
-))
+         (file "~/.emacs.d/templates/template_070319.org"))))
 
 ;; refile targets
 (setq org-refile-targets '(("~/Dropbox/org/organizer.org" :maxlevel . 3)
@@ -72,8 +71,6 @@
 ;; screenshot
 (require 'org-attach-screenshot)
 
-;; org-ref
-
 ;; to get the citation right
 (setq org-latex-pdf-process
       '("pdflatex -shell-escape -interaction nonstopmode -f %f"
@@ -81,7 +78,12 @@
         "pdflatex -shell-escape -interaction nonstopmode -f %f"
         "pdflatex -shell-escape -interaction nonstopmode -f %f"))
 
-(require 'org-ref)
+;; export with code highlight
+(setq org-latex-listings 'minted
+      org-latex-packages-alist '(("" "minted")))
+
+;; org-ref
+
 (setq reftex-default-bibliography '("~/Dropbox/bib/references.bib"))
 (setq org-ref-bibliography-notes "~/Dropbox/bib/notes.org"
       org-ref-default-bibliography '("~/Dropbox/bib/references.bib")
@@ -98,20 +100,13 @@
                ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
 
-;; export with code highlight
-(setq org-latex-listings 'minted
-      org-latex-packages-alist '(("" "minted")))
-
-;; do not use time grid by default
-(setq org-agenda-use-time-grid nil)
-
 ;; default bibliography
 (setq bibtex-completion-bibliography
       '("~/Dropbox/bib/references.bib"))
 
 ;; enable download mode
-(org-download-enable)
-(setq-default org-download-image-dir "~/Pictures/org")
+;; (org-download-enable)
+;; (setq-default org-download-image-dir "~/Pictures/org")
 
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -129,5 +124,8 @@
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.5))
 
+(setq org-latex-prefer-user-labels t)
+
 ;; collapose all blocks by default
 (add-hook 'org-mode-hook 'org-hide-block-all)
+
