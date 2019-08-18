@@ -63,7 +63,6 @@
 ;; automatic bookmark saving 
 (setq bookmark-save-flag 1)
 
-
 ;; use y-n instead of yes-no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
@@ -84,4 +83,12 @@
 ;; tex text scale
 (set-default 'preview-scale-function 1.2)
 
+;; type with a selected region removes it
+(delete-selection-mode t)
+
+;; highlight current line
+(global-hl-line-mode t)
+
+;; show line number
+;; (global-linum-mode t)
 
