@@ -129,3 +129,6 @@
 ;; collapose all blocks by default
 (add-hook 'org-mode-hook 'org-hide-block-all)
 
+
+;; export to html function
+(setq org-html-htmlize-output-type 'css)
