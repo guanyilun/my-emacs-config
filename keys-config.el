@@ -107,3 +107,15 @@
     (interleave-mode)))
 
 (bind-key "C-c r" 'send-to-read)
+
+;; begin general key definitions
+(require 'general)
+
+(general-create-definer my-local-leader-def
+  ;; :prefix my-local-leader
+  :prefix "SPC l")
+
+;; ** Mode Keybindings
+(my-local-leader-def
+  :keymaps 'normal 
+  "a" 'TeX-command-run-all)
