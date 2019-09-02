@@ -132,3 +132,26 @@
 
 ;; export to html function
 (setq org-html-htmlize-output-type 'css)
+
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
+
+(defun my-beamer-attach-fig (file &optional visit-dir method)
+  "Borrowed from org-attach-attach and adapat to attach
+   plots to org beamer document"
+  (interactive "fFile to keep as an attachment: \nP")
+  (setq method (or method org-attach-method))
+  (let ((basename (file-name-nondirectory file)))
+    (when (and org-attach-file-list-property (not org-attach-inherited))
+      (org-entry-add-to-multivalued-property
+       (point) org-attach-file-list-property basename))
+    (let* ((attach-dir (org-attach-dir t))
+	   (fname (expand-file-name basename attach-dir)))
+      (copy-file file fname)
+      (org-attach-commit)
+      (org-attach-tag)
+      (insert "#+ATTR_LATEX: width=\\textwidth")
+      (org-return-indent)
+      (insert (concat "[[" fname "]]"))
+      (org-display-inline-images))))

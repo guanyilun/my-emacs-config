@@ -108,6 +108,10 @@
 
 (bind-key "C-c r" 'send-to-read)
 
+(bind-key "C-'" 'comment-or-uncomment-region)
+
+(bind-key "C-c s" 'helm-occur)
+
 ;; begin general key definitions
 (require 'general)
 
@@ -119,3 +123,4 @@
 (my-local-leader-def
   :keymaps 'normal 
   "a" 'TeX-command-run-all)
+

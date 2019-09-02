@@ -2,6 +2,11 @@
 ;; Authur: Y. Guan
 ;; Date: 12/18/18
 
+;; evil mode
+(require 'evil)
+(evil-mode 1)
+(setq evil-default-state 'emacs)
+
 ;; theme
 ;;(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 ;;(load-theme 'dracula t)
@@ -169,10 +174,7 @@
 ;; indent for javascript mode
 (setq js-indent-level 2)
 
-;; evil mode
-(require 'evil)
-(evil-mode 1)
-;; autofill
+; autofill
 ;; (setq-default auto-fill-function 'do-auto-fill)
 
 ;; fill column indicator
