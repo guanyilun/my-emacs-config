@@ -234,3 +234,9 @@
 ;; show line number
 ;; (global-linum-mode t)
 
+;; show a beacon when switching buffers
+(beacon-mode 1)
+
+;; split and follow
+(global-set-key "\C-x2" (lambda () (interactive) (split-window-vertically) (other-window 1)))
+(global-set-key "\C-x3" (lambda () (interactive) (split-window-horizontally) (other-window 1)))
