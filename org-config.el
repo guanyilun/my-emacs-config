@@ -141,7 +141,7 @@
   "Borrowed from org-attach-attach and adapat to attach
    plots to org beamer document"
   (interactive "fFile to keep as an attachment: \nP")
-  (setq method (or method org-attach-method))
+  (require 'org-attach)
   (let ((basename (file-name-nondirectory file)))
     (when (and org-attach-file-list-property (not org-attach-inherited))
       (org-entry-add-to-multivalued-property
@@ -151,7 +151,7 @@
       (copy-file file fname)
       (org-attach-commit)
       (org-attach-tag)
-      (insert "#+ATTR_LATEX: width=\\textwidth")
+      (insert "#+ATTR_LATEX: :width 0.8\\textwidth")
       (org-return-indent)
       (insert (concat "[[" fname "]]"))
       (org-display-inline-images))))
